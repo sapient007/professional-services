@@ -138,7 +138,6 @@ def convert_pdfs(main_project_id,
                  input_bucket_name,
                  region,
                  service_acct,
-                 region,
                  output_directory="patent_demo_data",
                  temp_directory="./tmp/google"):
   """Converts all pdfs in a bucket to png and txt using OCR.
