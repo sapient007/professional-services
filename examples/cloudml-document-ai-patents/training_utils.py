@@ -66,7 +66,6 @@ class MatchClassification(MatchFunction):
   """Matching function specific to Int. Classification.
   When we get several matches, we return the first match after the position of
   IntCl for classification.
-
   Note: we use r'Int\.? C[I|L|1]' as keyword pattern.
   """
 
@@ -136,12 +135,11 @@ class MatchApplicant(MatchFunction):
 
 def convert_pdfs(main_project_id,
                  input_bucket_name,
-                 service_acct,
                  region,
+                 service_acct,
                  output_directory="patent_demo_data",
                  temp_directory="./tmp/google"):
   """Converts all pdfs in a bucket to png and txt using OCR.
-
   Args:
     input_bucket_name (string): Bucket of Public PDFs
     output_bucket_name (string): Bucket for Converted PNGs
@@ -182,17 +180,16 @@ def convert_pdfs(main_project_id,
           output_directory=output_directory,
           region=region,
           temp_directory=temp_directory,
-          service_acct=service_acct,
-          region=region)
+          service_acct=service_acct)
 
 
 def image_classification(main_project_id,
+                         region,
                          data_project_id,
                          dataset_id,
                          table_id,
                          service_acct,
                          input_bucket_name,
-                         region,
                          output_directory="patent_demo_data"):
   """Create AutoML model for image classification."""
 
@@ -236,12 +233,12 @@ def image_classification(main_project_id,
 
 
 def object_detection(main_project_id,
+                     region,
                      data_project_id,
                      dataset_id,
                      table_id,
                      service_acct,
                      input_bucket_name,
-                     region,
                      output_directory="patent_demo_data"):
   """Create AutoML model for object detection."""
   logger.info(f"Beginning AutoML object detection process.")
@@ -287,12 +284,12 @@ def object_detection(main_project_id,
 
 
 def text_classification(main_project_id,
+                        region,
                         data_project_id,
                         dataset_id,
                         table_id,
                         service_acct,
                         input_bucket_name,
-                        region,
                         output_directory="patent_demo_data"):
   """Create AutoML model for text classification. """
   logger.info(f"Starting AutoML text classification.")
@@ -339,12 +336,12 @@ def text_classification(main_project_id,
 
 
 def entity_extraction(main_project_id,
+                      region,
                       data_project_id,
                       dataset_id,
                       table_id,
                       service_acct,
                       input_bucket_name,
-                      region,
                       config,
                       output_directory="patent_demo_data",
                       temp_directory = "./tmp/google"):
@@ -494,7 +491,6 @@ def create_automl_model(project_id,
 
 def create_jsonl(pdf_text, value_dict):
   """Constructs the jsonl for a given pdf.
-
   Args:
     pdf_text: Text of the pdf.
     value_dict: a dictionary of fieldname: fieldvalue.
@@ -539,7 +535,6 @@ LIST_FIELDS = {
 
 def save_jsonl_content(jsonl, full_gcs_path, service_acct):
   """Saves jsonl content to specified GCS location.
-
   Args:
     jsonl: jsonl file
     full_gcs_path: GCS location to upload the jsonl file
