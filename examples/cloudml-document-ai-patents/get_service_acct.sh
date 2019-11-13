@@ -46,7 +46,7 @@ then
     --display-name="${SA_NAME//\"}"
 else
     echo "There is already a service account named ${SA_NAME}.";
-    exit
+    #exit
 fi
 
 # Create the service account key

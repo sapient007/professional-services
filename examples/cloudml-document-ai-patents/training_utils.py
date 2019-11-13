@@ -136,6 +136,7 @@ class MatchApplicant(MatchFunction):
 
 def convert_pdfs(main_project_id,
                  input_bucket_name,
+                 region,
                  service_acct,
                  region,
                  output_directory="patent_demo_data",
@@ -180,6 +181,7 @@ def convert_pdfs(main_project_id,
   # OCR Processing to obtain text files
   run_ocr(project_id=main_project_id,
           output_directory=output_directory,
+          region=region,
           temp_directory=temp_directory,
           service_acct=service_acct,
           region=region)
